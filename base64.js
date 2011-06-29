@@ -27,7 +27,7 @@ Base64 = {
 			temp_binary = input.charCodeAt(index).toString(2);
 			while (temp_binary.length < 8)
 			{
-				input_binary = "0"+temp_binary;
+				temp_binary = "0"+temp_binary;
 			}
 			// Stick this string on the end of the previous 8-bit binary strings to
 			// get one big concatenated binary representation
@@ -76,6 +76,10 @@ Base64 = {
 		for (index=0; index < input.length; index++)
 		{
 			temp_bin = swaps.indexOf(input[index]).toString(2);
+			while (temp_bin.length < 6)
+			{
+				temp_bin = "0"+temp_bin;
+			}
 			output_binary = output_binary + temp_bin.substring(0,6);
 			while (output_binary.length >= 8)
 			{
