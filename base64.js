@@ -75,12 +75,18 @@ Base64 = {
 		var index;
 		for (index=0; index < input.length; index++)
 		{
-			temp_bin = swaps.indexOf(input[index]).toString(2);
+			temp_bin = swaps.indexOf(input.charAt(index)).toString(2);
 			while (temp_bin.length < 6)
 			{
+				// Add significant zeroes
 				temp_bin = "0"+temp_bin;
 			}
-			output_binary = output_binary + temp_bin.substring(0,6);
+			while (temp_bin.length > 6)
+			{
+				// Remove significant bits
+				temp_bin = temp_bin.substring(1);
+			}
+			output_binary = output_binary + temp_bin;
 			while (output_binary.length >= 8)
 			{
 				output = output + String.fromCharCode(parseInt(output_binary.substring(0,8),2));
